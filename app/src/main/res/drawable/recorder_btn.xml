@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--单击时是一个绿色背景的圆形-->
+    <item android:state_pressed="true">
+        <!--填充颜色-->
+        <shape android:shape="oval">
+            <solid android:color="@color/green" />
+        </shape>
+    </item>
+    <!--默认情况下是一个蓝色背景的圆形-->
+    <item >
+        <shape android:shape="oval">
+            <!--填充个颜色-->
+            <solid android:color="@color/colorPrimary" />
+        </shape>
+    </item>
+
+</selector>

@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
      * 准备录音 录音之前 先判断是否有相关权限
      */
     private void readyRecord() {
+
         AndPermission.with(this)
                 .requestCode(100)
                 .permission(Permission.MICROPHONE, Permission.STORAGE)

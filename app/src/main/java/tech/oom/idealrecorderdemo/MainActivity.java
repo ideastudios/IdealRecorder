@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         public void showRequestPermissionRationale(int requestCode, final Rationale rationale) {
             com.yanzhenjie.alertdialog.AlertDialog.newBuilder(MainActivity.this)
                     .setTitle("友好提醒")
-                    .setMessage("录制声纹锁需要录音读取文件相关权限哦，爱给不给")
+                    .setMessage("录制声音保存录音需要录音和读取文件相关权限哦，爱给不给")
                     .setPositiveButton("好，给你", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

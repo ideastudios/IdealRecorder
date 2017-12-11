@@ -36,7 +36,7 @@ public class StatusListener {
     /**
      * 录音失败
      *
-     * @param code     错误码
+     * @param code     错误码  {@link IdealConst.RecorderErrorCode}
      * @param errorMsg 错误信息描述
      */
     public void onRecordError(int code, String errorMsg) {

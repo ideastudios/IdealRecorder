@@ -54,6 +54,17 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
 
     }
 
+    /**
+     * 获取当前应用的context
+     *
+     * @return 当前应用的context
+     */
+    public static Context getContext() {
+        if (context == null)
+            throw new IllegalStateException("请先在全局Application中调用 IdealRecorder.init() 初始化！");
+        return context;
+    }
+
     public static IdealRecorder getInstance() {
         return IdealRecorderHolder.instance;
     }
@@ -135,7 +146,7 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
      * @return
      */
     public boolean isRecordAudioPermissionGranted() {
-        return ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED;
+        return ContextCompat.checkSelfPermission(getContext(), Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED;
     }
 
     /**
@@ -144,7 +155,7 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
      * @return
      */
     public boolean isWriteExternalStoragePermissionGranted() {
-        return ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        return ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
     }
 
     /**

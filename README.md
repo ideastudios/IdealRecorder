@@ -34,6 +34,7 @@ Application中的onCreate()方法中，传入全局context
 在控件的点击事件中进行配置
 
 ```java
+        idealRecorder = IdealRecorder.getInstance();
 
     	idealRecorder.setRecordFilePath(getSaveFilePath());
     	//如果需要保存录音文件  设置好保存路径就会自动保存  也可以通过onRecordData 回调自己保存  不设置 不会保存录音
@@ -57,6 +58,14 @@ recordConfig 为录音时的配置 请参考IdealRecorder.RecordConfig 类
 statusListener为回调是的listener 重写需要用到的回调即可
 
 具体使用请参考demo 代码
+
+
+停止录音
+```java
+
+        idealRecorder.stop();
+        //停止录音
+```
 
 
 

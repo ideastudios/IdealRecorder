@@ -68,6 +68,6 @@ statusListener为回调是的listener 重写需要用到的回调即可
 
 ## 感谢
 
-该工程demo 正弦波形图使用的是[Jay-Goo/WaveLineView]: https://github.com/Jay-Goo/WaveLineView
-动态申请权限使用的是[yanzhenjie/AndPermission]: https://github.com/yanzhenjie/AndPermission
+该工程demo 正弦波形图使用的是[Jay-Goo/WaveLineView](https://github.com/Jay-Goo/WaveLineView)
+动态申请权限使用的是[yanzhenjie/AndPermission](https://github.com/yanzhenjie/AndPermission)
 

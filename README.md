@@ -34,13 +34,18 @@ Application中的onCreate()方法中，传入全局context
 在控件的点击事件中进行配置
 
 ```java
-   		//如果需要保存录音文件  设置好保存路径就会自动保存  也可以通过onRecordData 回调自己保存  不设置 不会保存录音
+
     	idealRecorder.setRecordFilePath(getSaveFilePath());
-        //设置录音配置 最长录音时长 以及音量回调的时间间隔
+    	//如果需要保存录音文件  设置好保存路径就会自动保存  也可以通过onRecordData 回调自己保存  不设置 不会保存录音
+
         idealRecorder.setRecordConfig(recordConfig).setMaxRecordTime(20000).setVolumeInterval(200);
-        //设置录音时各种状态的监听
+         //设置录音配置 最长录音时长 以及音量回调的时间间隔
+
         idealRecorder.setStatusListener(statusListener);
-        idealRecorder.start(); //开始录音
+         //设置录音时各种状态的监听
+
+        idealRecorder.start();
+        //开始录音
 ```
 
 其中:

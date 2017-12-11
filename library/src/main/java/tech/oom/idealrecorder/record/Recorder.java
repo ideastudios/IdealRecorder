@@ -131,6 +131,7 @@ public class Recorder {
                 }
                 if (recordConfig == null) {
                     Log.e(TAG, "Error recordConfig is null");
+                    return false;
                 }
                 short nChannels;
                 int sampleRate;

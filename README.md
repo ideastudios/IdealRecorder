@@ -63,3 +63,11 @@ statusListener为回调是的listener 重写需要用到的回调即可
 - 文件会保存为wav的格式，如果需保存其他格式，请自行在onRecordData 回调中自己保存即可
 - 音量计算的方式为10 * Math.log10(mean); mean为buffer元素平方和除以数据总长度，也可在onRecordData中自行计算
 
+
+
+
+## 感谢
+
+该工程demo 正弦波形图使用的是[Jay-Goo/WaveLineView]: https://github.com/Jay-Goo/WaveLineView
+动态申请权限使用的是[yanzhenjie/AndPermission]: https://github.com/yanzhenjie/AndPermission
+

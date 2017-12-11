@@ -6,7 +6,7 @@ an ideal WAV PCM recorder library for Android
 
 
 ## 效果图
-<img src="gif1/screenrecorder.gif"/>
+<img src="gif/screenrecorder.gif"/>
 
 ## 特点
 

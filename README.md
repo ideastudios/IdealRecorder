@@ -64,6 +64,24 @@ statusListener为回调是的listener 重写需要用到的回调即可
 - 音量计算的方式为10 * Math.log10(mean); mean为buffer元素平方和除以数据总长度，也可在onRecordData中自行计算
 
 
+## Gradle
+[![](https://www.jitpack.io/v/ideastudios/IdealRecorder.svg)](https://www.jitpack.io/#ideastudios/IdealRecorder)
+1. Add it in your root build.gradle at the end of repositories:
+```
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+2. Add the dependency
+```
+	dependencies {
+	        compile 'com.github.ideastudios:LuckView:1.0.2'
+	}
+
+```
 
 
 ## 感谢

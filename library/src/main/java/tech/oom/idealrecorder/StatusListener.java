@@ -32,7 +32,6 @@ public class StatusListener {
     }
 
 
-
     /**
      * 录音失败
      *
@@ -67,6 +66,15 @@ public class StatusListener {
      * 停止录音的回调
      */
     public void onStopRecording() {
+    }
+
+    /**
+     * 全部的录音pcm数据
+     *
+     * @param arr 所有的录音pcm数据
+     */
+    public void onRecordedAllData(byte[] arr) {
+
     }
 
 }

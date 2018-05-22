@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 
+import java.io.ByteArrayOutputStream;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import tech.oom.idealrecorder.file.AudioFileHelper;
@@ -35,7 +36,7 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
     private long maxRecordTime = 6000L;
     private long volumeInterval = 200L;
     private int count;
-
+    private ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
     private AtomicBoolean isStarted = new AtomicBoolean(false);
 
     private IdealRecorder() {
@@ -213,6 +214,7 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
             audioFileHelper.start();
         }
         count = 0;
+        byteArrayOutputStream.reset();
         runOnUi(new Runnable() {
             public void run() {
                 if (statusListener != null) {
@@ -232,7 +234,7 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
 
             audioFileHelper.save(bytes, 0, bytes.length);
         }
-
+        byteArrayOutputStream.write(bytes, 0, bytes.length);
         runOnUi(new Runnable() {
             @Override
             public void run() {
@@ -304,10 +306,12 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
             @Override
             public void run() {
                 if (statusListener != null) {
+                    statusListener.onRecordedAllData(byteArrayOutputStream.toByteArray());
                     statusListener.onStopRecording();
                 }
             }
         });
+//        byteArrayOutputStream.reset();
     }
 
     private int calculateVolume(short[] wave) {

@@ -1,8 +1,19 @@
 package tech.oom.idealrecorder.utils;
 
 import android.media.AudioFormat;
+import android.text.TextUtils;
+import android.util.Log;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.RandomAccessFile;
 
 import tech.oom.idealrecorder.IdealRecorder;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * pcm转wav工具类
@@ -129,11 +140,12 @@ public class PcmToWavUtil {
 
     /**
      * 根据录音的配置信息和pcm数据，获取wav文件数据
-     * @param recordConfig  录音配置
-     * @param pcmArray pcm数据
+     *
+     * @param recordConfig 录音配置
+     * @param pcmArray     pcm数据
      * @return wav数据
      */
-    public static byte[] getWaveFile(IdealRecorder.RecordConfig recordConfig , byte[] pcmArray){
+    public static byte[] getWaveFile(IdealRecorder.RecordConfig recordConfig, byte[] pcmArray) {
         short nChannels;
         short bSamples;
         if (recordConfig.getAudioFormat() == AudioFormat.ENCODING_PCM_16BIT) {
@@ -147,8 +159,79 @@ public class PcmToWavUtil {
         } else {
             nChannels = 2;
         }
-        return getWaveFile(recordConfig.getSampleRate(),nChannels,bSamples,pcmArray);
+        return getWaveFile(recordConfig.getSampleRate(), nChannels, bSamples, pcmArray);
     }
+
+    /**
+     * 将pcm文件转换成wav文件
+     *
+     * @param srcConfig  源PCM音频文件的配置信息
+     * @param srcPath    源PCM文件的路径
+     * @param targetPath 生成目标wav文件的路径
+     */
+    public static void transferPcmToWav(IdealRecorder.RecordConfig srcConfig, String srcPath, String targetPath) {
+
+        if (TextUtils.isEmpty(srcPath)) {
+            android.util.Log.e(TAG, "pcm src path not set ");
+            return;
+        }
+        if (TextUtils.isEmpty(targetPath)) {
+            android.util.Log.e(TAG, "target path not set");
+            return;
+        }
+        if (srcConfig == null) {
+            Log.e(TAG, "RecordConfig not set");
+            return;
+        }
+        File targetFile = new File(targetPath);
+
+        if (targetFile.exists()) {
+            targetFile.delete();
+        } else {
+            File parentDir = targetFile.getParentFile();
+            if (!parentDir.exists()) {
+                parentDir.mkdirs();
+            }
+        }
+        RandomAccessFile randomAccessFile = null;
+        InputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream(srcPath);
+            randomAccessFile = new RandomAccessFile(targetFile, "rw");
+            randomAccessFile.setLength(0);
+            byte[] waveFile = getWaveFile(srcConfig, new byte[0]);
+            randomAccessFile.write(waveFile);
+            byte[] aar = new byte[1024 * 3];
+            int len = 0;
+            while ((len = inputStream.read(aar)) != -1) {
+                randomAccessFile.write(aar, 0, len);
+            }
+            inputStream.close();
+            randomAccessFile.seek(4); // riff chunk size
+            randomAccessFile.writeInt(Integer.reverseBytes((int) (randomAccessFile.length() - 8)));
+            randomAccessFile.seek(40); // data chunk size
+            randomAccessFile.writeInt(Integer.reverseBytes((int) (randomAccessFile.length() - 44)));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+
+            try {
+                if (randomAccessFile != null) {
+                    randomAccessFile.close();
+                    randomAccessFile = null;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+    }
+
 
     /**
      * 根据pcm数据 获取示例wav文件数据 适用于8K采样率 单通道 16位的录音数据
@@ -159,8 +242,6 @@ public class PcmToWavUtil {
     public static byte[] getSampleWaveFile(byte[] pcmArray) {
         return getWaveFile(8000, 1, 16, pcmArray);
     }
-
-
 
 
 }

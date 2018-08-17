@@ -387,15 +387,15 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
          *                      See {@link MediaRecorder.AudioSource} for the recording source definitions.
          *                      recommend {@link MediaRecorder.AudioSource#MIC}
          * @param sampleRate    the sample rate expressed in Hertz. {@link RecordConfig#SAMPLE_RATE_44K_HZ} is Recommended ,
+         *                      {@link RecordConfig#SAMPLE_RATE_22K_HZ},{@link RecordConfig#SAMPLE_RATE_16K_HZ},
+         *                      {@link RecordConfig#SAMPLE_RATE_11K_HZ},{@link RecordConfig#SAMPLE_RATE_8K_HZ}
          * @param channelConfig describes the configuration of the audio channels.
          *                      See {@link AudioFormat#CHANNEL_IN_MONO} and
          *                      {@link AudioFormat#CHANNEL_IN_STEREO}.  {@link AudioFormat#CHANNEL_IN_MONO} is guaranteed
          *                      to work on all devices.
          * @param audioFormat   the format in which the audio data is to be returned.
          *                      See {@link AudioFormat#ENCODING_PCM_8BIT}, {@link AudioFormat#ENCODING_PCM_16BIT},
-         *                      and {@link AudioFormat#ENCODING_PCM_FLOAT}. @link RecordConfig#SAMPLE_RATE_22K_HZ},@link RecordConfig#SAMPLE_RATE_16K_HZ},@link RecordConfig#SAMPLE_RATE_11K_HZ},@link RecordConfig#SAMPLE_RATE_8K_HZ}
-         *                      {@link AudioFormat#SAMPLE_RATE_UNSPECIFIED} means to use a route-dependent value
-         *                      which is usually the sample rate of the source.
+         *                      and {@link AudioFormat#ENCODING_PCM_FLOAT}.
          */
         public RecordConfig(int audioSource, int sampleRate, int channelConfig, int audioFormat) {
             this.audioSource = audioSource;
@@ -431,8 +431,7 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
 
         /**
          * @param sampleRate the sample rate expressed in Hertz. {@link RecordConfig#SAMPLE_RATE_44K_HZ} is Recommended ,
-         * @link RecordConfig#SAMPLE_RATE_22K_HZ},@link RecordConfig#SAMPLE_RATE_16K_HZ},@link RecordConfig#SAMPLE_RATE_11K_HZ},@link RecordConfig#SAMPLE_RATE_8K_HZ}
-         * {@link AudioFormat#SAMPLE_RATE_UNSPECIFIED} means to use a route-dependent value
+         * @link RecordConfig#SAMPLE_RATE_22K_HZ},{@link RecordConfig#SAMPLE_RATE_16K_HZ},{@link RecordConfig#SAMPLE_RATE_11K_HZ},{@link RecordConfig#SAMPLE_RATE_8K_HZ}
          * which is usually the sample rate of the source.
          */
         public RecordConfig setSampleRate(int sampleRate) {

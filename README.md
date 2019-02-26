@@ -21,10 +21,10 @@ an ideal WAV PCM recorder library for Android
 
 ## 初始化
 
-Application中的onCreate()方法中，传入全局context
+在Application或Activity的onCreate()方法中，传入context
 
 ```java
- IdealRecorder.init(this);
+  IdealRecorder.getInstance().init(this);
 ```
 
 
@@ -93,8 +93,9 @@ statusListener为回调是的listener 重写需要用到的回调即可
 2. Add the dependency
 ```
 	dependencies {
-	        implementation 'com.github.ideastudios:AndroidPcmResample:v1.1.1'
+	        implementation'com.github.ideastudios:IdealRecorder:2.0.1'
 	}
+
 
 ```
 

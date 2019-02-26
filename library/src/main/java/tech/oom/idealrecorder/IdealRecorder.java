@@ -25,7 +25,7 @@ import tech.oom.idealrecorder.utils.Log;
 
 public class IdealRecorder implements RecorderCallback, AudioFileListener {
     private static final String TAG = "IdealRecorder";
-    private static Context context;
+    private Context context;
     private Handler idealHandler;
     private RecordConfig config;
 
@@ -45,12 +45,16 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
         audioFileHelper = new AudioFileHelper(this);
     }
 
+    public static IdealRecorder getInstance() {
+        return IdealRecorderHolder.instance;
+    }
+
     /**
      * 初始化当前实例
      *
      * @param mContext 当前应用的application context
      */
-    public static void init(Context mContext) {
+    public void init(Context mContext) {
         context = mContext;
 
     }
@@ -60,14 +64,10 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
      *
      * @return 当前应用的context
      */
-    public static Context getContext() {
+    public Context getContext() {
         if (context == null)
-            throw new IllegalStateException("请先在全局Application中调用 IdealRecorder.init() 初始化！");
+            throw new IllegalStateException("请先在Application或Activity中调用 IdealRecorder.getInstance.init() 初始化！");
         return context;
-    }
-
-    public static IdealRecorder getInstance() {
-        return IdealRecorderHolder.instance;
     }
 
     public IdealRecorder setRecordConfig(RecordConfig config) {

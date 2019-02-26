@@ -22,6 +22,16 @@ public class StatusListener {
     public void onRecordData(short[] data, int length) {
     }
 
+    /**
+     * 录音时的buffer回调 在工作线程中
+     *
+     * @param data   PCM Data
+     * @param length 长度
+     */
+    public void onRecordDataOnWorkerThread(short[] data, int length) {
+
+    }
+
 
     /**
      * 录音时的音量

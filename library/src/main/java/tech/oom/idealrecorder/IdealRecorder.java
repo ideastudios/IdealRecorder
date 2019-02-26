@@ -235,6 +235,9 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
             audioFileHelper.save(bytes, 0, bytes.length);
         }
         byteArrayOutputStream.write(bytes, 0, bytes.length);
+        if (statusListener != null) {
+            statusListener.onRecordDataOnWorkerThread(wave, wave == null ? 0 : wave.length);
+        }
         runOnUi(new Runnable() {
             @Override
             public void run() {

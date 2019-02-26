@@ -89,10 +89,11 @@ statusListener为回调是的listener 重写需要用到的回调即可
 		}
 	}
 ```
+
 2. Add the dependency
 ```
 	dependencies {
-	        compile 'com.github.ideastudios:IdealRecorder:1.0.3'
+	        implementation 'com.github.ideastudios:AndroidPcmResample:v1.1.1'
 	}
 
 ```

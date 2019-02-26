@@ -29,5 +29,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.yanzhenjie:permission:1.1.0'
     compile 'com.github.Jay-Goo:WaveLineView:v1.0.3'
-    compile 'com.github.ideastudios:IdealRecorder:1.0.3'
+    compile 'com.github.ideastudios:IdealRecorder:2.0.2'
 }

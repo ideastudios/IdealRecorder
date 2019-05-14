@@ -3,7 +3,7 @@ an ideal WAV PCM recorder library for Android
 
 Record WAV or PCM voice library on Android, support volume, recording data, recording status, file path callback
 
-## [README of Chinese](https://github.com/ideastudios/IdealRecorder/README.md)
+## [README of Chinese](https://github.com/ideastudios/IdealRecorder/blob/master/README.md)
 
 ## GIF
 <img src="gif/screenrecorder.gif"/>

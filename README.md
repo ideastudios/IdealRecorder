@@ -1,6 +1,6 @@
 # IdealRecorder
 an ideal WAV PCM recorder library for Android
-## [README of English](https://github.com/ideastudios/IdealRecorder/README_EN.md)
+## [README of English](https://github.com/ideastudios/IdealRecorder/blob/master/README_EN.md)
 
 安卓上录制 WAV 或者PCM语音的库， 支持音量、录音数据、录音状态、文件路径回调
 

@@ -94,7 +94,7 @@ statusListener为回调是的listener 重写需要用到的回调即可
 2. Add the dependency
 ```
 	dependencies {
-	        implementation'com.github.ideastudios:IdealRecorder:2.0.1'
+	        implementation'com.github.ideastudios:IdealRecorder:2.0.3'
 	}
 
 

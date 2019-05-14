@@ -88,7 +88,7 @@ Stop recording
 2. Add the dependency
 ```
 	dependencies {
-	        implementation'com.github.ideastudios:IdealRecorder:2.0.1'
+	        implementation'com.github.ideastudios:IdealRecorder:2.0.3'
 	}
 
 

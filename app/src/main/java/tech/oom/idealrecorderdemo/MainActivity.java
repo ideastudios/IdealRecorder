@@ -32,13 +32,9 @@ public class MainActivity extends AppCompatActivity {
     private WaveView waveView;
     private WaveLineView waveLineView;
     private TextView tips;
-    /**
-     * IdealRecorder的实例
-     */
+
     private IdealRecorder idealRecorder;
-    /**
-     * Recorder的配置信息 采样率 采样位数
-     */
+
     private IdealRecorder.RecordConfig recordConfig;
 
     private RationaleListener rationaleListener = new RationaleListener() {
@@ -158,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        recordConfig = new IdealRecorder.RecordConfig(MediaRecorder.AudioSource.MIC, IdealRecorder.RecordConfig.SAMPLE_RATE_22K_HZ, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
+        recordConfig = new IdealRecorder.RecordConfig(MediaRecorder.AudioSource.MIC, 48000, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
 
     }
 
@@ -180,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
     private void record() {
         //如果需要保存录音文件  设置好保存路径就会自动保存  也可以通过onRecordData 回调自己保存  不设置 不会保存录音
         idealRecorder.setRecordFilePath(getSaveFilePath());
+//        idealRecorder.setWavFormat(false);
         //设置录音配置 最长录音时长 以及音量回调的时间间隔
         idealRecorder.setRecordConfig(recordConfig).setMaxRecordTime(20000).setVolumeInterval(200);
         //设置录音时各种状态的监听

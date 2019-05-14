@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.media.AudioFormat;
 import android.media.MediaRecorder;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
@@ -116,7 +117,7 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
      */
     public IdealRecorder setRecordFilePath(String path) {
         if (!TextUtils.isEmpty(path) && audioFileHelper != null) {
-            if (!isWriteExternalStoragePermissionGranted()) {
+            if (path.startsWith(Environment.getExternalStorageDirectory().getAbsolutePath()) && !isWriteExternalStoragePermissionGranted()) {
                 Log.e(TAG, "set recorder file path failed,because no WRITE_EXTERNAL_STORAGE permission was granted");
 
                 return this;
@@ -127,6 +128,17 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
             isAudioFileHelperInit = false;
             audioFileHelper.setSavePath(null);
         }
+        return this;
+    }
+
+    /**
+     * 设置录音保存的格式是否为wav 默认保存为wav格式 true 保存为wav格式 false 文件保存问pcm格式
+     *
+     * @param isWav 是否为wav格式 默认为true 保存为wav格式 ;false 文件保存问pcm格式
+     * @return
+     */
+    public IdealRecorder setWavFormat(boolean isWav) {
+        audioFileHelper.setWav(isWav);
         return this;
     }
 

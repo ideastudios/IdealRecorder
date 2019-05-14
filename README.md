@@ -1,10 +1,11 @@
 # IdealRecorder
-an ideal WAV PCM recorder library for Android 
+an ideal WAV PCM recorder library for Android
+## [English ](https://github.com/Jay-Goo/WaveLineView)
 
 安卓上录制 WAV 或者PCM语音的库， 支持音量、录音数据、录音状态、文件路径回调
 
 
-
+## [README of English][README_EN]
 ## 效果图
 <img src="gif/screenrecorder.gif"/>
 

@@ -1,6 +1,6 @@
 # IdealRecorder
 an ideal WAV PCM recorder library for Android
-## [README of English](https://github.com/ideastudios/IdealRecorder/blob/master/README_EN.md)
+## [README of English](https://github.com/ideastudios/IdealRecorder/README_EN.md)
 
 安卓上录制 WAV 或者PCM语音的库， 支持音量、录音数据、录音状态、文件路径回调
 
@@ -93,7 +93,7 @@ statusListener为回调是的listener 重写需要用到的回调即可
 2. Add the dependency
 ```
 	dependencies {
-	        implementation'com.github.ideastudios:IdealRecorder:2.0.3'
+	        implementation'com.github.ideastudios:IdealRecorder:2.0.4'
 	}
 
 

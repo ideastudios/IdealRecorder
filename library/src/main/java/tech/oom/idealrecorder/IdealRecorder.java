@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.media.AudioFormat;
 import android.media.MediaRecorder;
-import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
@@ -56,7 +55,7 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
      * @param mContext 当前应用的application context
      */
     public void init(Context mContext) {
-        context = mContext;
+        context = mContext.getApplicationContext();
 
     }
 
@@ -117,11 +116,16 @@ public class IdealRecorder implements RecorderCallback, AudioFileListener {
      */
     public IdealRecorder setRecordFilePath(String path) {
         if (!TextUtils.isEmpty(path) && audioFileHelper != null) {
-            if (path.startsWith(Environment.getExternalStorageDirectory().getAbsolutePath()) && !isWriteExternalStoragePermissionGranted()) {
-                Log.e(TAG, "set recorder file path failed,because no WRITE_EXTERNAL_STORAGE permission was granted");
+            String externalFilePath = context.getExternalFilesDir(null).getAbsolutePath();
+            String cacheFilePath = context.getCacheDir().getAbsolutePath();
 
-                return this;
+            if (!path.startsWith(externalFilePath) || !path.startsWith(cacheFilePath)) {
+                if (!isWriteExternalStoragePermissionGranted()) {
+                    Log.e(TAG, "set recorder file path failed,because no WRITE_EXTERNAL_STORAGE permission was granted");
+                    return this;
+                }
             }
+
             isAudioFileHelperInit = true;
             audioFileHelper.setSavePath(path);
         } else {

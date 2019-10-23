@@ -24,6 +24,7 @@ import java.util.List;
 import jaygoo.widget.wlv.WaveLineView;
 import tech.oom.idealrecorder.IdealRecorder;
 import tech.oom.idealrecorder.StatusListener;
+import tech.oom.idealrecorder.utils.Log;
 import tech.oom.idealrecorderdemo.widget.WaveView;
 
 public class MainActivity extends AppCompatActivity {
@@ -71,12 +72,14 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < length; i += 60) {
                 waveView.addData(data[i]);
             }
+            Log.d("MainActivity", "current buffer size is " + length);
         }
 
         @Override
         public void onVoiceVolume(int volume) {
             double myVolume = (volume - 40) * 4;
             waveLineView.setVolume((int) myVolume);
+            Log.d("MainActivity", "current volume is " + volume);
         }
 
         @Override

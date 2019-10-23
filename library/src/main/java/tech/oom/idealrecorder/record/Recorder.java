@@ -9,7 +9,10 @@ import tech.oom.idealrecorder.utils.Log;
 
 
 public class Recorder {
-    public static final int TIMER_INTERVAL = 20;
+    /**
+     * 每次buffer语音对应的时长为100ms
+     */
+    public static final int TIMER_INTERVAL = 100;
     private static final String TAG = "Recorder";
     private IdealRecorder.RecordConfig recordConfig;
     private AudioRecord mAudioRecorder = null;
